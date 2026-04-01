@@ -113,4 +113,3 @@ NEXT_PUBLIC_API_DEVELOPMENT_BASE_URL=http://localhost:5000/api/v1
 ##  Note
 
 This is a minimal frontend built for assignment purposes. It focuses on UI, validation, and core workflow without advanced integrations.
-al Rahman
