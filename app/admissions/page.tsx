@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 interface Applicant {
   _id: string;
   fullName: string;
-  name: string; // backend uses name
+  name: string; 
   email: string;
   phone: string;
   programId: { _id: string; programName: string; department: string };
@@ -33,7 +33,6 @@ export default function AdmissionsPage() {
     try {
       setLoading(true);
       const res = await api.get("/applicants");
-      // Map name to fullName for UI display if needed
       const mapped = res.data.map((a: any) => ({
         ...a,
         fullName: a.name || a.fullName,
@@ -55,23 +54,21 @@ export default function AdmissionsPage() {
 
     try {
       if (status === "Draft") {
-        // Step 1: Allocate Seat
         await api.post(`/applicant/allocate/${id}`, {
           applicant
         });
-        alert("✅ Seat locked successfully!");
+        alert("Seat locked successfully!");
       } else if (status === "Seat Locked") {
-        // Step 2: Confirm Admission
         if (applicant.feeStatus !== "Paid") {
-          alert("🛑 BLOCK: Fee must be PAID first.");
+          alert("BLOCK: Fee must be PAID first.");
           return;
         }
         if (applicant.documentStatus !== "Verified") {
-          alert("🛑 BLOCK: Documents must be VERIFIED first.");
+          alert("BLOCK: Documents must be VERIFIED first.");
           return;
         }
         const res = await api.post(`/applicant/confirm/${id}`);
-        alert(`🎉 ADMITTED! Admission No: ${res.data.admissionNumber}`);
+        alert(`ADMITTED! Admission No: ${res.data.admissionNumber}`);
       }
       fetchList();
     } catch (e: any) {

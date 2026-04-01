@@ -60,12 +60,10 @@ export default function SeatMatrixPage() {
   };
 
   const onSubmit: SubmitHandler<SeatMatrixValues> = async (data) => {
-    console.log("🚀 Submitting Seat Matrix Data:", data);
+    console.log("Submitting Seat Matrix Data:", data);
 
     setLoading(true);
     try {
-      // In this assignment, Seat Matrix is updated on the program record
-      // Changed to PUT to follow REST conventions
       await api.put(`/program/${data.programId}`, {
         totalIntake: data.totalIntake,
         quotas: data.quotas,

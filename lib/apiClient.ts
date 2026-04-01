@@ -13,9 +13,7 @@ const api = axios.create({
   withCredentials: true,
 });
 
-// Helper to attach interceptors to any instance
 const attachInterceptors = (instance: any) => {
-  // attach token dynamically to every request
   instance.interceptors.request.use((config: any) => {
     const token = Cookies.get("token");
     if (token) {
@@ -28,11 +26,9 @@ const attachInterceptors = (instance: any) => {
     return config;
   });
 
-  // handle responses and errors
   instance.interceptors.response.use(
     (response: any) => response,
     async (error: any) => {
-      // Handle 401 Unauthorized (session expired/invalid)
       if (error.response?.status === 401) {
         Cookies.remove("token", { path: "/" });
         if (typeof window !== "undefined") {
@@ -44,7 +40,6 @@ const attachInterceptors = (instance: any) => {
   );
 };
 
-// Initialize interceptors
 attachInterceptors(api);
 
 export default api;

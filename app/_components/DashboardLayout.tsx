@@ -14,7 +14,6 @@ export default function DashboardLayout({
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check for the client-side flag instead of the secure HttpOnly token
     const isLoggedIn = Cookies.get("isLoggedIn");
     if (!isLoggedIn) {
       router.push("/login");
