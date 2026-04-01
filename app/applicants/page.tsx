@@ -77,7 +77,7 @@ export default function ApplicantsPage() {
           <p className="text-sm text-gray-500">Register new candidates in the ecosystem.</p>
         </header>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-8 rounded border shadow-sm space-y-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-8 rounded-xl border shadow-sm space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-3 border-b border-gray-100 pb-2"><h3 className="text-xs font-bold uppercase text-blue-600">Personal Information (Candidate)</h3></div>
             <div><label className="text-xs font-medium text-gray-500 mb-1 block">Full Name</label><input {...register("fullName")} className="w-full border rounded px-3 py-2" /></div>

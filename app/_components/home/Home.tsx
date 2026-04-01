@@ -50,7 +50,7 @@ export default function Home() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="bg-white border p-6 rounded-3xl shadow-sm overflow-hidden"
+                            className="bg-white border p-6 rounded-xl shadow-sm overflow-hidden"
                         >
                             <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-100">
                                 <div>
@@ -83,7 +83,7 @@ export default function Home() {
                         </motion.div>
                     ))}
                     {(!stats.seatMatrix || stats.seatMatrix.length === 0) && (
-                        <div className="bg-gray-50 p-12 text-center rounded-3xl border border-dashed border-gray-300">
+                        <div className="bg-gray-50 p-12 text-center rounded-xl border border-dashed border-gray-300">
                             <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">No programs configured. Go to Masters to create one.</p>
                         </div>
                     )}
@@ -95,7 +95,7 @@ export default function Home() {
 
 function StatCard({ icon, title, value }: { icon: React.ReactNode, title: string, value: string | number }) {
     return (
-        <motion.div whileHover={{ y: -5 }} className="bg-white p-6 border rounded-3xl shadow-sm flex items-center gap-4 transition-all hover:border-blue-200">
+        <motion.div whileHover={{ y: -5 }} className="bg-white p-6 border rounded-xl shadow-sm flex items-center gap-4 transition-all hover:border-blue-200">
             <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 shadow-sm">
                 {icon}
             </div>

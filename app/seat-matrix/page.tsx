@@ -92,7 +92,7 @@ export default function SeatMatrixPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-3">Select Program</label>
-                <select {...register("programId")} className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 transition-all font-bold">
+                <select {...register("programId")} className="w-full border border-gray-300 rounded px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 transition-all font-bold">
                   <option value="">Choose program...</option>
                   {programs.map(p => (
                     <option key={p._id} value={p._id}>{p.programName} ({p.admissionMode}) - {p.academicYear}</option>
@@ -103,22 +103,22 @@ export default function SeatMatrixPage() {
 
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-3">Total Intake</label>
-                <input type="number" {...register("totalIntake")} className={`w-full border rounded-xl px-4 py-3 font-bold text-xl ${errors.totalIntake ? "border-red-500" : "border-gray-300"}`} placeholder="0" />
+                <input type="number" {...register("totalIntake")} className={`w-full border rounded px-4 py-3 font-bold text-xl ${errors.totalIntake ? "border-red-500" : "border-gray-300"}`} placeholder="0" />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50 p-6 rounded-2xl border border-dashed text-black">
               <div>
                 <label className="block text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest">KCET Quota</label>
-                <input type="number" {...register("quotas.KCET")} className="w-full border border-gray-300 rounded-lg px-3 py-2 font-bold" />
+                <input type="number" {...register("quotas.KCET")} className="w-full border border-gray-300 rounded px-3 py-2 font-bold" />
               </div>
               <div>
                 <label className="block text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest">COMEDK Quota</label>
-                <input type="number" {...register("quotas.COMEDK")} className="w-full border border-gray-300 rounded-lg px-3 py-2 font-bold" />
+                <input type="number" {...register("quotas.COMEDK")} className="w-full border border-gray-300 rounded px-3 py-2 font-bold" />
               </div>
               <div>
                 <label className="block text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest">Management Quota</label>
-                <input type="number" {...register("quotas.Management")} className="w-full border border-gray-300 rounded-lg px-3 py-2 font-bold" />
+                <input type="number" {...register("quotas.Management")} className="w-full border border-gray-300 rounded px-3 py-2 font-bold" />
               </div>
             </div>
 

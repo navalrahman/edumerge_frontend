@@ -79,41 +79,41 @@ export default function MastersPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Institution Name</label>
-                <input {...register("institution")} className={`w-full border rounded-lg px-3 py-2 ${errors.institution ? "border-red-500" : "border-gray-300"}`} placeholder="e.g., Global Tech Institure" />
+                <input {...register("institution")} className={`w-full border rounded px-3 py-2 ${errors.institution ? "border-red-500" : "border-gray-300"}`} placeholder="e.g., Global Tech Institure" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Campus</label>
-                <input {...register("campus")} className={`w-full border rounded-lg px-3 py-2 ${errors.campus ? "border-red-500" : "border-gray-300"}`} placeholder="Main Campus" />
+                <input {...register("campus")} className={`w-full border rounded px-3 py-2 ${errors.campus ? "border-red-500" : "border-gray-300"}`} placeholder="Main Campus" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Department</label>
-                <input {...register("department")} className={`w-full border rounded-lg px-3 py-2 ${errors.department ? "border-red-500" : "border-gray-300"}`} placeholder="CS Dept" />
+                <input {...register("department")} className={`w-full border rounded px-3 py-2 ${errors.department ? "border-red-500" : "border-gray-300"}`} placeholder="CS Dept" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Program / Branch</label>
-                <input {...register("programName")} className={`w-full border rounded-lg px-3 py-2 ${errors.programName ? "border-red-500" : "border-gray-300"}`} placeholder="Mechanical Engg" />
+                <input {...register("programName")} className={`w-full border rounded px-3 py-2 ${errors.programName ? "border-red-500" : "border-gray-300"}`} placeholder="Mechanical Engg" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Academic Year</label>
-                <input {...register("academicYear")} className="w-full border border-gray-300 rounded-lg px-3 py-2" />
+                <input {...register("academicYear")} className="w-full border border-gray-300 rounded px-3 py-2" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Course Type</label>
-                <select {...register("courseType")} className="w-full border border-gray-300 rounded-lg px-3 py-2">
+                <select {...register("courseType")} className="w-full border border-gray-300 rounded px-3 py-2">
                   <option value="UG">UG</option>
                   <option value="PG">PG</option>
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Entry Type</label>
-                <select {...register("entryType")} className="w-full border border-gray-300 rounded-lg px-3 py-2">
+                <select {...register("entryType")} className="w-full border border-gray-300 rounded px-3 py-2">
                   <option value="Regular">Regular</option>
                   <option value="Lateral">Lateral</option>
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-2">Admission Mode</label>
-                <select {...register("admissionMode")} className="w-full border border-gray-300 rounded-lg px-3 py-2">
+                <select {...register("admissionMode")} className="w-full border border-gray-300 rounded px-3 py-2">
                   <option value="Government">Government</option>
                   <option value="Management">Management</option>
                 </select>
