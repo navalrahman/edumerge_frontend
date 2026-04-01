@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import DashboardLayout from "../_components/DashboardLayout";
 import api from "@/lib/apiClient";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 interface Applicant {
   _id: string;
@@ -57,23 +58,23 @@ export default function AdmissionsPage() {
         await api.post(`/applicant/allocate/${id}`, {
           applicant
         });
-        alert("Seat locked successfully!");
+        toast.success("Seat locked successfully!");
       } else if (status === "Seat Locked") {
         if (applicant.feeStatus !== "Paid") {
-          alert("BLOCK: Fee must be PAID first.");
+          toast.error("BLOCK: Fee must be PAID first.");
           return;
         }
         if (applicant.documentStatus !== "Verified") {
-          alert("BLOCK: Documents must be VERIFIED first.");
+          toast.error("BLOCK: Documents must be VERIFIED first.");
           return;
         }
         const res = await api.post(`/applicant/confirm/${id}`);
-        alert(`ADMITTED! Admission No: ${res.data.admissionNumber}`);
+        toast.error(`ADMITTED! Admission No: ${res.data.admissionNumber}`);
       }
       fetchList();
     } catch (e: any) {
       console.error(e);
-      alert(e.response?.data?.error || "Action failed.");
+      toast.error(e.response?.data?.error || "Action failed.");
     }
   };
 

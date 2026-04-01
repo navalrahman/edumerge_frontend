@@ -6,8 +6,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "@/lib/apiClient";
 import DashboardLayout from "../_components/DashboardLayout";
+import toast from "react-hot-toast";
 
-// Zod Schema for Masters only
 const masterSchema = z.object({
   institution: z.string().min(1, "Institution is required"),
   campus: z.string().min(1, "Campus is required"),
@@ -57,12 +57,12 @@ export default function MastersPage() {
     setLoading(true);
     try {
       await api.post("/program", data);
-      alert("Master Setup Saved Successfully!");
+      toast.success("Master Setup Saved Successfully!");
       reset();
       fetchMasters();
     } catch (error) {
       console.error(error);
-      alert("Failed to save master setup");
+      toast.error("Failed to save master setup");
     } finally {
       setLoading(false);
     }

@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "@/lib/apiClient";
 import DashboardLayout from "../_components/DashboardLayout";
+import toast from "react-hot-toast";
 
 const seatMatrixSchema = z.object({
   programId: z.string().min(1, "Program Selection is required"),
@@ -68,12 +69,12 @@ export default function SeatMatrixPage() {
         totalIntake: data.totalIntake,
         quotas: data.quotas,
       });
-      alert("✅ Seat Matrix Updated Successfully!");
+      toast.success("Seat Matrix Updated Successfully!");
       reset({ programId: "", totalIntake: 0, quotas: { KCET: 0, COMEDK: 0, Management: 0 } });
       fetchPrograms();
     } catch (error: any) {
-      console.error("❌ Seat Matrix Update Error:", error);
-      alert(error.response?.data?.error || "Failed to update Seat Matrix. Please check permissions or quota sum.");
+      console.error("Seat Matrix Update Error:", error);
+      toast.error(error.response?.data?.error || "Failed to update Seat Matrix. Please check permissions or quota sum.");
     } finally {
       setLoading(false);
     }

@@ -5,6 +5,7 @@ import { Menu, X, LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 export default function SideBar() {
   const [open, setOpen] = useState(false);
@@ -47,8 +48,10 @@ export default function SideBar() {
           md:translate-x-0 md:static md:w-64 z-50 overflow-y-auto
         `}
       >
-        <h2 className="text-xl font-bold mb-6 hidden md:block tracking-tight text-white">EDU MERGE</h2>
-
+        <div>
+          <h2 className="text-xl font-bold hidden md:block tracking-tight text-white">EDU MERGE</h2>
+        </div>
+        <p>{userRole}</p>
         <nav className="flex-1">
           <ul className="space-y-2">
             {sidebarItems.map((item) => {

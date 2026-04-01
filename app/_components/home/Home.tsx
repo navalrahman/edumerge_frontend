@@ -23,7 +23,6 @@ export default function Home() {
 
     if (!stats) return <div className="animate-pulse space-y-4 pt-10 px-4 text-xl font-bold text-gray-500">Syncing Dashboard Data...</div>;
 
-    console.log(stats);
 
     return (
         <div className="space-y-8 animate-fade-in pb-10 pt-4">

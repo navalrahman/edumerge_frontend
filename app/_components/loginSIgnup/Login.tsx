@@ -9,6 +9,8 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import api from "@/lib/apiClient";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
+
 
 const loginSchema = z.object({
     emailOrMobile: z
@@ -62,13 +64,16 @@ export default function AuthForm() {
                     if ("role" in data) {
                         Cookies.set("userRole", data.role as string, { path: "/" });
                     }
+                    toast.success("Login successful 🎉");
                     router.push("/");
                 } else {
+                    toast.error("Invalid credentials ❌");
                     router.push("/login");
                 }
             } catch (error: any) {
                 console.log("Signup Error: ", error);
-                alert(error.response?.data?.error || "Signup failed. Please check form fields.");
+                // alert(error.response?.data?.error || "Signup failed. Please check form fields.");
+                toast.error("Invalid credentials ❌");
             }
 
         } else {
@@ -80,12 +85,15 @@ export default function AuthForm() {
                     // Store role from server response
                     if (res.data?.role) {
                         Cookies.set("userRole", res.data.role, { path: "/" });
-                    }
+                    }                    
+                    toast.success("Login successful");
                     router.push("/");
                 }
             } catch (error: any) {
                 console.log("Login Error: ", error);
-                alert(error.response?.data?.error || "Login failed. Invalid credentials.");
+                // alert(error.response?.data?.error || "Login failed. Invalid credentials.");
+                toast.error("Invalid credentials");
+
             }
         }
     };
