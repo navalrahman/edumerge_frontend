@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 interface Applicant {
   _id: string;
   fullName: string;
-  name: string; 
+  name: string;
   email: string;
   phone: string;
   programId: { _id: string; programName: string; department: string };
@@ -69,7 +69,7 @@ export default function AdmissionsPage() {
           return;
         }
         const res = await api.post(`/applicant/confirm/${id}`);
-        toast.error(`ADMITTED! Admission No: ${res.data.admissionNumber}`);
+        toast.success(`ADMITTED! Admission No: ${res.data.admissionNumber}`);
       }
       fetchList();
     } catch (e: any) {
@@ -123,21 +123,39 @@ export default function AdmissionsPage() {
                     <td className="p-4 px-6 text-center">
                       <div className="flex justify-center flex-col items-center gap-1">
                         <button
+                          disabled={a.feeStatus === "Paid" || a.status === "Admitted"}
                           onClick={async () => {
-                            await api.put(`/applicant/${a._id}`, { feeStatus: a.feeStatus === "Paid" ? "Pending" : "Paid" });
+                            await api.put(`/applicant/${a._id}`, { feeStatus: "Paid" });
                             fetchList();
                           }}
-                          className={`text-[10px] font-black uppercase ${a.feeStatus === "Paid" ? "text-emerald-600 bg-emerald-50 border border-emerald-100" : "text-rose-600 bg-rose-50 border border-rose-100"} px-3 py-1 rounded-full hover:scale-105 transition-all`}
+                          className={`text-[10px] font-black uppercase px-3 py-1 rounded-full transition-all
+                              ${a.feeStatus === "Paid"
+                              ? "text-emerald-600 bg-emerald-50 border border-emerald-100 cursor-not-allowed"
+                              : "text-rose-600 bg-rose-50 border border-rose-100 hover:bg-rose-100 hover:scale-105"
+                            }
+                              disabled:hover:bg-inherit
+                              disabled:hover:scale-100
+                          `}
                         >
                           Fee: {a.feeStatus}
                         </button>
                         <button
+                          disabled={a.documentStatus === "Verified" || a.status === "Admitted"}
                           onClick={async () => {
-                            const next = a.documentStatus === "Pending" ? "Submitted" : a.documentStatus === "Submitted" ? "Verified" : "Pending";
+                            const next =
+                              a.documentStatus === "Pending" ? "Submitted" : "Verified";
                             await api.put(`/applicant/${a._id}`, { documentStatus: next });
                             fetchList();
                           }}
-                          className="text-[9px] font-bold text-gray-400 hover:text-blue-600 transition-colors uppercase"
+                          className={`
+                            text-[9px] font-bold uppercase transition-all
+                            ${a.documentStatus === "Verified"
+                              ? "text-emerald-600 cursor-not-allowed"
+                              : "text-gray-400 hover:text-blue-600 hover:scale-105"
+                            }
+                            disabled:hover:text-inherit
+                            disabled:hover:scale-100
+                          `}
                         >
                           Docs: {a.documentStatus}
                         </button>
